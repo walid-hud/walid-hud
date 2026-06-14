@@ -13,7 +13,7 @@ const ObservedSection = ({ id, children }: Props) => {
     (state) => state.setActiveSection,
   );
   const { inView, ref } = useInView({
-    threshold: 0.2
+    threshold: 0.2,
   });
 
   useEffect(() => {

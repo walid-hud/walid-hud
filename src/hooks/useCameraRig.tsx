@@ -39,6 +39,8 @@ export const CameraRig = () => {
       4,
       delta,
     );
+
+    state.camera.lookAt(0, 0, 0);
   });
 
   return null;

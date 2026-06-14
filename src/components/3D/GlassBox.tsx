@@ -1,4 +1,4 @@
-import { MeshTransmissionMaterial, Octahedron } from "@react-three/drei";
+import { MeshTransmissionMaterial, RoundedBox } from "@react-three/drei";
 import { useAutoRotation } from "@/hooks/useAutoRotation";
 import { sceneConfig } from "@/store/scene-config";
 
@@ -6,7 +6,7 @@ export default function GlassBox() {
   const { position, rotation } = sceneConfig.About;
   const ref = useAutoRotation();
   return (
-    <Octahedron args={[1]} rotation={rotation} position={position} ref={ref}>
+    <RoundedBox args={[1]} rotation={rotation} position={position} ref={ref}>
       <MeshTransmissionMaterial
         backside
         backsideThickness={0.2}
@@ -22,6 +22,6 @@ export default function GlassBox() {
         clearcoat={1}
         clearcoatRoughness={0.1}
       />
-    </Octahedron>
+    </RoundedBox>
   );
 }

@@ -7,11 +7,11 @@ export type SceneConfigItem = {
 
 export const sceneConfig: Record<SectionKey, SceneConfigItem> = {
   About: {
-    position: [0, 0, 5],
+    position: [0, 0, 0],
     rotation: [0, 0, 0],
   },
   Skills: {
-    position: [2, 0, 5],
+    position: [10, 0, 5],
 
     rotation: [0, 0, 0],
   },

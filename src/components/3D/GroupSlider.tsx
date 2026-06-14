@@ -17,7 +17,7 @@ export const GroupSlider = ({ children }: { children: React.ReactNode }) => {
     const targetX = -target.position[0];
     const targetY = -target.position[1];
 
-    const speed = 6;
+    const speed = 4;
     const alpha = THREE.MathUtils.clamp(1 - Math.exp(-speed * delta), 0, 1);
 
     groupRef.current.position.x = THREE.MathUtils.lerp(
