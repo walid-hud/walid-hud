@@ -2,6 +2,7 @@
 import AboutMe from "@/components/AboutMe";
 import Banner from "@/components/Banner";
 import Navbar from "@/components/Navbar";
+import ObservedSection from "@/components/ObservedSection";
 import SkillsSection from "@/components/SkillsSection";
 import { TableOfContent } from "@/components/TableOfContent";
 
@@ -20,9 +21,13 @@ const page = () => {
 
           <div className="col-span-9 flex min-h-0 flex-col ">
             <Banner />
-            <div className="py-4 px-4 overflow-y-scroll">
-              <AboutMe />
-              <SkillsSection />
+            <div className="py-4 px-4 overflow-y-scroll *:mb-1/2">
+              <ObservedSection id="About">
+                <AboutMe />
+              </ObservedSection>
+              <ObservedSection id="Skills">
+                <SkillsSection />
+              </ObservedSection>
             </div>
           </div>
         </section>

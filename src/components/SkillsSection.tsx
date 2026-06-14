@@ -8,7 +8,7 @@ const SkillsSection = () => {
       <article id={hash}>
         <h2>{heading}</h2>
       </article>
-      <div className=" grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] ">
+      <div className=" grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] outline bg-muted gap-px">
         {skills.map((skill) => {
           return <SkillBadge skill={skill} key={skill.label} />;
         })}

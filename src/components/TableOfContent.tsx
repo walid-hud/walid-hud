@@ -7,10 +7,13 @@ import {
   FolderItem,
   SubFiles,
 } from "@/components/animate-ui/components/radix/files";
+import { cn } from "@/lib/utils";
 import { sections } from "@/store/static";
+import { useActiveSectionStore } from "@/store/store";
 import { StarsBackground } from "./animate-ui/components/backgrounds/stars";
 
 export const TableOfContent = () => {
+  const activeSection = useActiveSectionStore((state) => state.activeSection);
   return (
     <aside className="sticky top-0 col-span-3 h-full self-start overflow-y-auto shadow-[1px_0px_0_var(--muted)]">
       <StarsBackground starColor={"#9299d3"}>
@@ -22,7 +25,11 @@ export const TableOfContent = () => {
               </FileItem>
               <SubFiles className="pl-4 *:hover-cursor-pointer *:hover:text-space-indigo-500 *:transition-colors *:ease-in-out *:duration-300">
                 {Object.entries(sections).map(([key, { hash }]) => (
-                  <a key={key} href={`#${hash.toLowerCase()}`}>
+                  <a
+                    key={key}
+                    className={cn(activeSection === key && "opacity-50")}
+                    href={`#${hash.toLowerCase()}`}
+                  >
                     <FileItem icon={DotOutlineIcon}>{hash}</FileItem>
                   </a>
                 ))}

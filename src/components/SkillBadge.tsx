@@ -15,7 +15,11 @@ type Props = {
 const SkillBadge = ({ skill }: Props) => {
   const { Icon, label, description } = skill;
   return (
-    <Item variant="outline">
+    <Item className="group/skill bg-background relative overflow-hidden">
+      <Icon
+        size={128}
+        className="absolute top-1/2 left-1/2 -translate-1/2 blur-3xl opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300"
+      />
       <ItemMedia>
         <Icon size={48} />
       </ItemMedia>

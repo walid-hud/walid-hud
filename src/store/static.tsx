@@ -11,7 +11,6 @@ import {
   MongoDB,
   NextJs,
   NodeJs,
-  PostgreSQL,
   React as ReactIcon,
   ReactQuery,
   ReactRouter,
@@ -26,21 +25,38 @@ export type Skill = {
   Icon: React.FunctionComponent<DeveloperIconProps>;
 };
 
-export const skills: Skill[] = [
-  {
-    label: "TypeScript",
-    Icon: TypeScript,
-    description: "JavaScript, but type-safe.",
-  },
+type StackLabel = (typeof skills)[number]["label"];
+export type Link = {
+  label?: string;
+  href: string;
+  Icon: React.ElementType;
+};
+
+export type Project = {
+  label: string;
+  description: string;
+  stack: Skill[];
+  githubUrl?: string;
+  imageUrl?: string;
+  url?: string;
+};
+
+export const skills = [
   {
     label: "JavaScript",
     Icon: JavaScript,
     description: "Prefer TypeScript though.",
   },
   {
+    label: "TypeScript",
+    Icon: TypeScript,
+    description: "JavaScript, but type-safe.",
+  },
+
+  {
     label: "React",
     Icon: ReactIcon,
-    description: "Modern UI components.",
+    description: "Component based UI library",
   },
   {
     label: "Next.js",
@@ -87,22 +103,18 @@ export const skills: Skill[] = [
     Icon: Linux,
     description: "To avoid Microsoft's shenanigans",
   },
-];
-export type Link = {
-  label?: string;
-  href: string;
-  Icon: React.ElementType;
-};
-export type Project = {
-  label: string;
-  description: string;
-  stack: Skill[];
-  githubUrl?: string;
-  imageUrl?: string;
-  url?: string;
-};
+] as const;
 
-export const projectsData: Project[] = [];
+const selectStack = (...labels: StackLabel[]) =>
+  skills.filter((skill) => labels.includes(skill.label));
+export const projectsData: Project[] = [
+  {
+    label: "Zen-jumia",
+    description:
+      "Web scrapper for the Jumia e-commerce platform, built with Go and MongoDB. It efficiently extracts product data, providing insights into pricing trends and market analysis.",
+    stack: selectStack("Tailwind CSS", "TypeScript", "Node.js"),
+  },
+];
 
 export const sections = {
   About: {
@@ -131,6 +143,8 @@ export const sections = {
       "let's connect! I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.",
   },
 };
+
+export type SectionKey = keyof typeof sections;
 
 export const links: Link[] = [
   {
